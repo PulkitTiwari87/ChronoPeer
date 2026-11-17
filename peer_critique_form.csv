@@ -1,0 +1,10 @@
+inference_id,inference (copied from register),peer_alternative_explanation,evidence_supporting_alternative,evidence_that_would_distinguish,peer_rating (Supported / Weak / Unsupported),peer_name_and_date
+I1,"Files A, B and C record activity on one host (IEWIN7) in one Sysmon log; A and B involve the same remote peer 10.0.2.19. C is NOT shown to involve that peer.",,,,,
+I2,"At 20:26:51 a remote client at 10.0.2.19 created a service named ""hello"" over SMB (\ntsvcs pipe) whose ImagePath launched hidden PowerShell (PsExec-style remote execution).",,,,,
+I3,"The second PowerShell process (pid 2484) opened an outbound TCP session to 10.0.2.19:4444, consistent with a reverse shell / C2 channel.",,,,,
+I4,"T08 (access mask 0x1fffff, pid 3872 -> 2484) shows process injection.",,,,,
+I5,"T10 (service ""hello"" Start set to 4 = disabled) shows the actor cleaning up persistence.",,,,,
+I6,"At 20:32:51 a remote WMI session (WmiPrvSE parent) ran whoami /all as IEWIN7\IEUser, redirecting output to \\127.0.0.1\ADMIN$\__1556656369 (Impacket wmiexec-style discovery).",,,,,
+I7,"At 22:49 msiexec launched C:\Windows\Installer\MSI4FFD.tmp, which spawned cmd.exe; the same cmd.exe (pid 2892) ran whoami 3 min 18 s later, suggesting an interactive shell.",,,,,
+I8,"T18 and T20 (Sysmon event 2, ""file creation time changed"") show timestomping of the MSI.",,,,,
+I9,T19 (VSSVC.exe started by services.exe seconds after msiexec began) indicates shadow-copy tampering.,,,,,

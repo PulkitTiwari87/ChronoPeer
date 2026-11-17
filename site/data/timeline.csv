@@ -1,0 +1,26 @@
+id,source,record_id,eid,type,event_utc,record_utc,log_delay_s,host,summary
+T01,A,9811,3,Network connection,2019-04-30 20:26:51.599,2019-04-30 20:26:53.152,1.553,IEWIN7,System IN 10.0.2.18:445 -> 10.0.2.19:33801
+T02,A,9804,18,Pipe connected,2019-04-30 20:26:51.793,2019-04-30 20:26:51.793,0.0,IEWIN7,System pipe \ntsvcs
+T03,A,9805,13,Registry value set,2019-04-30 20:26:51.934,2019-04-30 20:26:51.949,0.015,IEWIN7,services.exe set HKLM\System\CurrentControlSet\services\hello\Start = DWORD (0x00000003)
+T04,A,9806,13,Registry value set,2019-04-30 20:26:51.934,2019-04-30 20:26:51.981,0.047,IEWIN7,services.exe set HKLM\System\CurrentControlSet\services\hello\ImagePath = %%COMSPEC%% /b /c start /b /min powershell.exe -nop -w hidde
+T05,A,9807,1,Process create,2019-04-30 20:26:51.949,2019-04-30 20:26:52.090,0.141,IEWIN7,"services.exe -> cmd.exe | C:\Windows\system32\cmd.exe /b /c start /b /min powershell.exe -nop -w hidden -noni -c ""if | user=NT AUTHORITY\SYSTEM"
+T06,A,9808,1,Process create,2019-04-30 20:26:51.965,2019-04-30 20:26:52.106,0.141,IEWIN7,"cmd.exe -> powershell.exe | powershell.exe  -nop -w hidden -noni -c ""if([IntPtr]::Size -eq 4){$b='powershell.exe'}else | user=NT AUTHORITY\SYSTEM"
+T07,A,9809,1,Process create,2019-04-30 20:26:52.356,2019-04-30 20:26:52.356,0.0,IEWIN7,"powershell.exe -> powershell.exe | ""powershell.exe"" -noni -nop -w hidden -c &([scriptblock]::create((New-Object IO.StreamRead | user=NT AUTHORITY\SYSTEM"
+T08,A,9810,10,Process access,2019-04-30 20:26:52.356,2019-04-30 20:26:52.371,0.015,IEWIN7,powershell.exe(pid 3872) opened powershell.exe(pid 2484) access=0x001fffff
+T09,A,9813,3,Network connection,2019-04-30 20:26:52.794,2019-04-30 20:26:54.152,1.358,IEWIN7,powershell.exe OUT 10.0.2.18:49160 -> 10.0.2.19:4444
+T10,A,9812,13,Registry value set,2019-04-30 20:26:53.168,2019-04-30 20:26:53.199,0.031,IEWIN7,services.exe set HKLM\System\CurrentControlSet\services\hello\Start = DWORD (0x00000004)
+T11,B,9825,3,Network connection,2019-04-30 20:32:49.659,2019-04-30 20:32:50.902,1.243,IEWIN7,System IN 10.0.2.18:445 -> 10.0.2.19:45616
+T12,B,9830,3,Network connection,2019-04-30 20:32:51.144,2019-04-30 20:32:52.402,1.258,IEWIN7,System OUT 127.0.0.1:49162 -> 127.0.0.1:445
+T13,B,9831,3,Network connection,2019-04-30 20:32:51.144,2019-04-30 20:32:52.402,1.258,IEWIN7,System IN 127.0.0.1:445 -> 127.0.0.1:49162
+T14,B,9826,1,Process create,2019-04-30 20:32:51.168,2019-04-30 20:32:51.168,0.0,IEWIN7,WmiPrvSE.exe -> cmd.exe | cmd.exe /Q /c cd \ 1> \\127.0.0.1\ADMIN$\__1556656369.7 2>&1 | user=IEWIN7\IEUser
+T15,B,9827,1,Process create,2019-04-30 20:32:51.246,2019-04-30 20:32:51.246,0.0,IEWIN7,WmiPrvSE.exe -> cmd.exe | cmd.exe /Q /c cd  1> \\127.0.0.1\ADMIN$\__1556656369.7 2>&1 | user=IEWIN7\IEUser
+T16,B,9828,1,Process create,2019-04-30 20:32:51.324,2019-04-30 20:32:51.324,0.0,IEWIN7,WmiPrvSE.exe -> cmd.exe | cmd.exe /Q /c whoami /all 1> \\127.0.0.1\ADMIN$\__1556656369.7 2>&1 | user=IEWIN7\IEUser
+T17,B,9829,1,Process create,2019-04-30 20:32:51.356,2019-04-30 20:32:51.371,0.015,IEWIN7,cmd.exe -> whoami.exe | whoami  /all  | user=IEWIN7\IEUser
+T18,C,10147,2,File creation time changed,2019-04-30 22:48:58.901,2019-04-30 22:48:58.901,0.0,IEWIN7,msiexec.exe changed creation time of C:\Users\IEUser\AppData\Local\Temp\302a23.msi (2019-04-30 22:48:58.901 -> 2019-04-30 22:43:38.892)
+T19,C,10148,1,Process create,2019-04-30 22:48:59.151,2019-04-30 22:48:59.260,0.109,IEWIN7,services.exe -> VSSVC.exe | C:\Windows\system32\vssvc.exe | user=NT AUTHORITY\SYSTEM
+T20,C,10149,2,File creation time changed,2019-04-30 22:49:07.901,2019-04-30 22:49:08.760,0.859,IEWIN7,msiexec.exe changed creation time of C:\Windows\Installer\304d1c.msi (2019-04-30 22:49:07.854 -> 2019-04-30 22:43:38.892)
+T21,C,10150,13,Registry value set,2019-04-30 22:49:08.432,2019-04-30 22:49:09.542,1.11,IEWIN7,msiexec.exe set HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\InProgress\(Default) = C:\Windows\Installer\304d1d.ipi
+T22,C,10151,1,Process create,2019-04-30 22:49:08.604,2019-04-30 22:49:09.760,1.156,IEWIN7,"msiexec.exe -> MSI4FFD.tmp | ""C:\Windows\Installer\MSI4FFD.tmp"" | user=IEWIN7\IEUser"
+T23,C,10152,7,Image loaded,2019-04-30 22:49:08.698,2019-04-30 22:49:09.792,1.094,IEWIN7,msiexec.exe loaded C:\Windows\System32\vbscript.dll
+T24,C,10153,1,Process create,2019-04-30 22:49:09.276,2019-04-30 22:49:10.198,0.922,IEWIN7,MSI4FFD.tmp -> cmd.exe | cmd | user=IEWIN7\IEUser
+T25,C,10154,1,Process create,2019-04-30 22:52:27.588,2019-04-30 22:52:27.588,0.0,IEWIN7,cmd.exe -> whoami.exe | whoami | user=IEWIN7\IEUser

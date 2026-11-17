@@ -1,0 +1,10 @@
+id,"inference (v2, after review)",confidence_v2,change_from_v1
+I1,Files A to C share a host and a log; one actor is not shown,Medium (host/log); Low (actor),unchanged
+I2,"Service ""hello"" ran hidden PowerShell; SMB origin is likely",High (service); Medium (SMB origin),origin lowered
+I3,Second PowerShell made an outbound connection to 10.0.2.19:4444,Medium,reworded
+I4,T08 is a parent holding a full-access handle to its child; injection unsupported,Low,evidence added (GUID match)
+I5,"Service ""hello"" Start value was set to 4 (disabled); intent unknown",High (fact); Low (intent),reworded
+I6,Remote WMI ran whoami /all as IEUser (wmiexec-style),High / Medium,reworded
+I7,MSI4FFD.tmp started a command shell that ran whoami 3 min later,Medium,reworded
+I8,MSI time change is consistent with normal Installer behaviour; timestomping unsupported,Low,unchanged
+I9,VSSVC start shows no tampering,Rejected,unchanged

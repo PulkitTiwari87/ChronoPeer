@@ -1,0 +1,308 @@
+{
+ "site": "https://chronopeer.vercel.app",
+ "run_at": "2026-11-17 11:02:13 UTC",
+ "resets": 0,
+ "error": null,
+ "steps": [
+  {
+   "n": 1,
+   "step": "Service is up and reports temporary storage",
+   "request": "GET /api/health",
+   "expected": "200",
+   "status": 200,
+   "ms": 427,
+   "ok": true,
+   "note": "ephemeral=True"
+  },
+  {
+   "n": 2,
+   "step": "Bundled demo case is present",
+   "request": "GET /api/cases",
+   "expected": "200",
+   "status": 200,
+   "ms": 286,
+   "ok": true,
+   "note": "DF-PBL-040 found"
+  },
+  {
+   "n": 3,
+   "step": "Investigator creates an investigation",
+   "request": "POST /api/cases",
+   "expected": "201",
+   "status": 201,
+   "ms": 269,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 4,
+   "step": "Reviewer mode cannot create an investigation",
+   "request": "POST /api/cases",
+   "expected": "403",
+   "status": 403,
+   "ms": 380,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 5,
+   "step": "Preview validates, hashes, flags malformed rows (stores nothing)",
+   "request": "POST /api/cases/2/evidence/preview",
+   "expected": "200",
+   "status": 200,
+   "ms": 268,
+   "ok": true,
+   "note": "5 valid, 1 malformed, 1 unknown timezone, SHA-256 matches local"
+  },
+  {
+   "n": 6,
+   "step": "Nothing was stored by the preview",
+   "request": "GET /api/cases/2/evidence",
+   "expected": "200",
+   "status": 200,
+   "ms": 268,
+   "ok": true,
+   "note": "evidence list = []"
+  },
+  {
+   "n": 7,
+   "step": "Import evidence (original file stored by hash)",
+   "request": "POST /api/cases/2/evidence",
+   "expected": "201",
+   "status": 201,
+   "ms": 250,
+   "ok": true,
+   "note": "valid_records = 5"
+  },
+  {
+   "n": 8,
+   "step": "Importing the same file again is refused",
+   "request": "POST /api/cases/2/evidence",
+   "expected": "409",
+   "status": 409,
+   "ms": 314,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 9,
+   "step": "Reviewer mode cannot import evidence",
+   "request": "POST /api/cases/2/evidence",
+   "expected": "403",
+   "status": 403,
+   "ms": 302,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 10,
+   "step": "A non-CSV/JSON file is rejected",
+   "request": "POST /api/cases/2/evidence",
+   "expected": "422",
+   "status": 422,
+   "ms": 274,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 11,
+   "step": "Integrity re-check of the stored file",
+   "request": "GET /api/evidence/2/verify",
+   "expected": "200",
+   "status": 200,
+   "ms": 261,
+   "ok": true,
+   "note": "verify result = MATCH"
+  },
+  {
+   "n": 12,
+   "step": "Timeline is chronological; unknown timezone is flagged and last",
+   "request": "GET /api/cases/2/timeline",
+   "expected": "200",
+   "status": 200,
+   "ms": 251,
+   "ok": true,
+   "note": "order EV001..EV004 then EV005 (unknown timezone, not converted)"
+  },
+  {
+   "n": 13,
+   "step": "Create an inference with three supporting events",
+   "request": "POST /api/cases/2/inferences",
+   "expected": "201",
+   "status": 201,
+   "ms": 260,
+   "ok": true,
+   "note": "status = proposed"
+  },
+  {
+   "n": 14,
+   "step": "An inference citing a non-existent event is refused",
+   "request": "POST /api/cases/2/inferences",
+   "expected": "422",
+   "status": 422,
+   "ms": 268,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 15,
+   "step": "Reviewer mode cannot create an inference",
+   "request": "POST /api/cases/2/inferences",
+   "expected": "403",
+   "status": 403,
+   "ms": 257,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 16,
+   "step": "A challenge without an alternative explanation is refused",
+   "request": "POST /api/inferences/10/reviews",
+   "expected": "422",
+   "status": 422,
+   "ms": 269,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 17,
+   "step": "Reviewer submits a challenge with an alternative",
+   "request": "POST /api/inferences/10/reviews",
+   "expected": "201",
+   "status": 201,
+   "ms": 262,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 18,
+   "step": "Inference is now marked challenged",
+   "request": "GET /api/inferences/10",
+   "expected": "200",
+   "status": 200,
+   "ms": 270,
+   "ok": true,
+   "note": "status = challenged"
+  },
+  {
+   "n": 19,
+   "step": "A duplicate review in the same round is refused",
+   "request": "POST /api/inferences/10/reviews",
+   "expected": "409",
+   "status": 409,
+   "ms": 523,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 20,
+   "step": "Investigator mode cannot submit a review",
+   "request": "POST /api/inferences/10/reviews",
+   "expected": "403",
+   "status": 403,
+   "ms": 270,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 21,
+   "step": "A response without a justification is refused",
+   "request": "POST /api/inferences/10/revisions",
+   "expected": "422",
+   "status": 422,
+   "ms": 259,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 22,
+   "step": "Investigator accepts the challenge and revises",
+   "request": "POST /api/inferences/10/revisions",
+   "expected": "201",
+   "status": 201,
+   "ms": 288,
+   "ok": true,
+   "note": "status revised; original reasoning preserved"
+  },
+  {
+   "n": 23,
+   "step": "The same review cannot be answered twice",
+   "request": "POST /api/inferences/10/revisions",
+   "expected": "409",
+   "status": 409,
+   "ms": 258,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 24,
+   "step": "History keeps original, challenge, response and current",
+   "request": "GET /api/inferences/10/history",
+   "expected": "200",
+   "status": 200,
+   "ms": 259,
+   "ok": true,
+   "note": "original -> challenge -> response -> current"
+  },
+  {
+   "n": 25,
+   "step": "Audit trail recorded every action in order",
+   "request": "GET /api/cases/2/audit",
+   "expected": "200",
+   "status": 200,
+   "ms": 289,
+   "ok": true,
+   "note": "case_created > evidence_imported > inference_created > review_submitted > revision_recorded"
+  },
+  {
+   "n": 26,
+   "step": "Investigator generates the PDF report",
+   "request": "GET /api/cases/2/report",
+   "expected": "200",
+   "status": 200,
+   "ms": 324,
+   "ok": true,
+   "note": "9264 bytes, all 11 section headings present"
+  },
+  {
+   "n": 27,
+   "step": "Reviewer mode cannot generate the report",
+   "request": "GET /api/cases/2/report",
+   "expected": "403",
+   "status": 403,
+   "ms": 256,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 28,
+   "step": "The audit trail cannot be deleted",
+   "request": "DELETE /api/cases/2/audit",
+   "expected": "405",
+   "status": 405,
+   "ms": 266,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 29,
+   "step": "The bundled demo case is untouched",
+   "request": "GET /api/cases/1/summary",
+   "expected": "200",
+   "status": 200,
+   "ms": 268,
+   "ok": true,
+   "note": "demo case (events, inferences) = (25, 9)"
+  },
+  {
+   "n": 30,
+   "step": "Dashboard reflects both investigations",
+   "request": "GET /api/dashboard",
+   "expected": "200",
+   "status": 200,
+   "ms": 249,
+   "ok": true,
+   "note": "investigations = 2"
+  }
+ ]
+}

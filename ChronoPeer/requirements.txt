@@ -1,0 +1,9 @@
+fastapi==0.163.1
+uvicorn==0.54.0
+SQLAlchemy==2.1.9
+pandas==3.1.1
+reportlab==5.1.0
+python-multipart==0.0.34
+# tests only
+pytest==9.2.0
+httpx==0.28.1

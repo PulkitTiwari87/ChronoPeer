@@ -1,0 +1,7 @@
+timestamp,event_type,description,source,artifact_id
+2024-01-15T09:02:00Z,LOGIN,Successful login,Windows Log,EV001
+2024-01-15T09:15:00Z,USB,USB device connected,USB Artifact,EV002
+2024-01-15T09:19:00Z,FILE_ACCESS,Document accessed,File System,EV003
+2024-01-15T09:35:00Z,USB,USB device disconnected,USB Artifact,EV004
+2024-01-15 09:40:00,LOGOUT,Session ended (clock timezone not recorded),Windows Log,EV005
+2024-01-15T09:41:00Z,USB,,USB Artifact,EV006

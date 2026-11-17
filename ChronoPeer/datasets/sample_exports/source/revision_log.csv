@@ -1,0 +1,13 @@
+revision,stage,item,challenge_or_issue,decision,change_made,by
+R0,Author verification,"I4, I5",Parent wording and an interval (1.4 s) did not match the raw events.,Accepted,I4 reworded (T07 names pid 3872 as parent of 2484); I5 interval corrected to 1.2 s.,Author
+R1,Review round 1,I1,Same host/log is not same actor.,Upheld,No rating change; actor claim stays Low.,Claude (AI reviewer)
+R1,Review round 1,I2,Remote origin rests on a 335 ms gap.,Partly upheld,Service creation stays High; SMB origin lowered to Medium.,Claude (AI reviewer)
+R1,Review round 1,I3,One connection is not a reverse shell.,Upheld,"Reworded to ""outbound connection"".",Claude (AI reviewer)
+R1,Review round 1,I4,Truncated SourceImage in T08.,Answered,GUIDs match T06 and T07; added as evidence; stays Low.,Claude (AI reviewer)
+R1,Review round 1,I5,"""Clean-up"" assigns intent.",Upheld,Reworded as an observation.,Claude (AI reviewer)
+R1,Review round 1,I6,"""Impacket"" rests on a copied file-name pattern.",Upheld,"Reworded to ""wmiexec-style"".",Claude (AI reviewer)
+R1,Review round 1,I7,"""Interactive"" is unproven.",Upheld,"Reworded to ""command shell"".",Claude (AI reviewer)
+R1,Review round 1,Order,Record order differs from event order at T09/T10.,Answered,Event-time order kept and documented.,Claude (AI reviewer)
+R1b,Review round 1 (later pass),I8,Event 2 alone does not show timestomping.,Upheld,No rating change; stays Low; timestomping unsupported.,Claude (AI reviewer)
+R1b,Review round 1 (later pass),I9,VSSVC start does not show shadow-copy tampering.,Upheld,No rating change; stays Rejected.,Claude (AI reviewer)
+R2,Raw-event re-check,I1,"Logon-ID wording omitted C's SYSTEM event (T19, 0x3e7).",Accepted,Wording corrected in inference_register.csv and peer_critique.csv; I1 rating unchanged (actor Low).,"Claude (AI), raw-event re-check"

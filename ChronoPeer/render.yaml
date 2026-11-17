@@ -1,0 +1,15 @@
+# Render blueprint: one free Python web service that serves both the API (/api) and the built UI (/).
+# The free plan's disk is ephemeral: the SQLite file is recreated on restart and the demo case re-seeds.
+services:
+  - type: web
+    name: chronopeer
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:create_app --factory --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: CHRONOPEER_SEED_DEMO
+        value: "1"

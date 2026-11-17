@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+PROGRESS.md
+instance/*.db
+instance/*.db-journal
+backend/storage/*
+!backend/storage/.gitkeep
+reports/*
+!reports/.gitkeep
+frontend/node_modules/
+# frontend/dist is committed on purpose so a Python-only host can serve the built UI.
